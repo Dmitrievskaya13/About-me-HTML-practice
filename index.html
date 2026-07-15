@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    /*это нужно для того, чтоб на телефоне всё хорошо отображалось*/
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика HTML / Страница о себе</title>
+
+    <style>
+        /*убираем отступы*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /*прокрутка плавная*/
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /*первый экран*/
+        .cover {
+            height: 100vh;
+            /*на всю высоту экрана */
+            background: #0a0a2e;
+            /*тёмно-синий фон*/
+            background-image: url('photo_2026-07-15_20-59-04.jpg');
+            /*а это я сама нарисовала)))*/
+            background-size: cover;
+            /*растянуть на весь экран */
+            background-position: center;
+            /*по центру */
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        /*Затемнение, чтобы текст читался*/
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 46, 0.5);
+            /*полупрозрачный тёмно-синий*/
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            /*поверх затемнения*/
+        }
+
+        .cover-content h1 {
+            font-size: 60px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .cover-content p {
+            font-size: 24px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #0a0a2e;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+        .final-footer {
+    margin-top: 40px;
+}
+
+.final-footer .btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: white;
+    color: #0a0a2e;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.final-footer .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+        /*вторая страница*/
+        .about-section {
+            min-height: 100vh;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            padding: 40px;
+        }
+
+        /*фото слева*/
+        .about-photo {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-photo img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /*а текст справааааа*/
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 48px;
+            font-weight: 900;
+            color: #0a0a2e;
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .final-section {
+    min-height: 100vh;
+    background: #0a0a2e; /*тёмно-синий фон */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.final-container {
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+
+.final-image {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.final-image img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /*делает картинку квадратной */
+    object-fit: cover; /*чтобы картинка красиво вписалась в квадрат */
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.15);
+    display: block;
+}
+
+
+.final-text {
+    margin-top: 30px;
+    color: white;
+}
+
+.final-text h2 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.final-text p {
+    font-size: 20px;
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+
+@media (max-width: 768px) {
+    .final-image {
+        max-width: 300px;
+    }
+    
+    .final-text h2 {
+        font-size: 28px;
+    }
+    
+    .final-text p {
+        font-size: 17px;
+    }
+}
+
+.more-section {
+    min-height: 100vh;
+    background: #f8f9fc;
+    padding: 60px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.more-container {
+    max-width: 800px;
+    width: 100%;
+    background: white;
+    border-radius: 30px;
+    padding: 60px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+.more-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.more-header h1 {
+    font-size: 48px;
+    color: #0a0a2e;
+    margin-bottom: 10px;
+}
+
+.more-header p {
+    font-size: 20px;
+    color: #666;
+}
+
+/* Блоки с текстом */
+.more-block {
+    margin-bottom: 50px;
+}
+
+.more-block h2 {
+    font-size: 28px;
+    color: #0a0a2e;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #0a0a2e;
+}
+
+.more-block p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.more-block ul {
+    list-style: none;
+    padding: 0;
+}
+
+.more-block ul li {
+    font-size: 18px;
+    line-height: 2.2;
+    color: #333;
+    padding-left: 10px;
+}
+
+/* Кнопка назад */
+.more-footer {
+    text-align: center;
+    margin-top: 30px;
+    
+}
+
+.more-footer .btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #0a0a2e;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.more-footer .btn:hover {
+    background: #1a1a5e;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(10, 10, 46, 0.3);
+}
+
+
+
+        /*это для телефонов, я пока не разобрала*/
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                padding: 20px;
+            }
+
+            .about-photo {
+                min-width: auto;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .about-photo img {
+                max-width: 100%;
+            }
+
+            .about-text h2 {
+                font-size: 32px;
+            }
+
+            .cover-content h1 {
+                font-size: 36px;
+            }
+
+            .cover-content p {
+                font-size: 18px;
+            }
+
+            .more-container {
+        padding: 30px 20px;
+    }
+
+    .more-header h1 {
+        font-size: 32px;
+    }
+
+    .more-block h2 {
+        font-size: 24px;
+    }
+
+    .more-block p,
+    .more-block ul li {
+        font-size: 16px;
+    }
+
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- первый экран -->
+    <section class="cover">
+        <div class="cover-content">
+            <h1>HELLO WORLD///</h1>
+            <p>I'm Urika and I <s>want to die</s> <br>I'm trying to figure out front-end development. </p>
+            <!-- когда тыкаем на кнопку переводится на ссылку about которая там дальше в айди указана тип -->
+            <a href="#about" class="btn">click</a>
+        </div>
+    </section>
+
+    <!-- второе -->
+    <section id="about" class="about-section">
+        <!-- тут я фиг че поняла вообще, но две колонки делаем, фото и текст. в класс записаны стили CSS, ну и через дивы пишем это всё -->
+        <div class="about-container">
+            <div class="about-photo">
+                <img src="e495f2ec9abb919582cc7c9adf227762.jpg" alt="фото раз">
+            </div>
+            <div class="about-text">
+                <h2>Well, it's me)</h2>
+                <p>I was never interested in programming, <br>but then I passed the exam with a score of 40 and <br>had to enroll in a randomly selected program <br>at Sevastopol State University.</p>
+                <p>Now I'm trying to learn something to earn money and help my family<br><br><b>P.s.</b> there are no real photos of me because I lost the genetic beauty lottery</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="more" class="more-section">
+        <div class="more-container">
+
+
+            <div class="more-header">
+                <h1>some more information</h1>
+                <p>I do not know why you need it</p>
+            </div>
+
+
+            <div class="more-block">
+                <h2>my professional skills</h2>
+                <p>
+                    I have more physical abilities than mental ones, <br>although you wouldn't know it from my figure. <br>I can skate, run sprints and marathons, stand on my head, <br>and play the guitar and piano.
+                </p>
+                <p>
+                    Despite my failure on the exam, I really love math. My tutor used to challenge <br>me to solve problems from the second part of the exam as quickly as possible. <br>Then I became a tutor myself, and now I use this method to scare my students)<br>
+                    <b>In short, I have a mathematical mind, I can adapt to any situation, <br>and I love scaring children with math (my students and others)</b>
+                </p>
+            </div>
+
+            <div class="more-block">
+                <h2>What about the character?</h2>
+                <p>Idk. I love post-punk music and the whole atmosphere of the Russian North. <br>By the way, even though I live in the South, my family is from the Nenets Autonomous Okrug. <br>Have you heard of the city of Naryan-Mar?<br>
+                    I don't know how to meet and talk to people, but I'm kind, honestly<br>
+                </p>
+                </div>
+
+
+            <div class="more-block">
+                <h2>Random facts (I...)</h2>
+                <ul>
+                    <li>♡ I chose my university and major by random</li>
+                    <li>♡ I really want to visit Irkutsk.</li>
+                    <li>♡ I like to escape from reality into games, music, or drawing</li>
+                    <li>♡ I like motorsport, but it's embarrassing to talk about it lol</li>
+                </ul>
+            </div>
+
+
+            <div class="more-footer">
+                <a href="#" class="btn">return</a>
+                <a href="#final" class="btn" style="margin-left: 15px;">next</a>
+            </div>
+
+            
+
+        </div>
+    </section>
+    <section id="final" class="final-section">
+    <div class="final-container">
+        
+
+        <div class="final-image">
+            <img src="3971f665381df60081435d1b04bb6719.jpg" alt="F">
+        </div>
+        
+
+        <div class="final-text">
+            <h2>I've run out of ideas for what to write next</h2>
+            <p>I've learned how to make buttons, and I've also learned how to design them. <br>I think that's enough development for now, and I can spend the rest of the summer sitting on my phone and doing nothing.</p>
+
+        </div>
+        
+
+        <div class="final-footer">
+            <a href="#" class="btn">return</a>
+        </div>
+        
+    </div>
+</section>
+
+</body>
+</html>
